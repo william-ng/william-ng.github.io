@@ -1,4 +1,3 @@
-<!--
 <!doctype html>
 <html>
 <head>
@@ -12,70 +11,4 @@
 <body>
   <app-root>Loading...</app-root>
 <script type="text/javascript" src="inline.66ed2d3852633eaf441d.bundle.js"></script><script type="text/javascript" src="polyfills.a3e056f914d9748ff431.bundle.js"></script><script type="text/javascript" src="vendor.41be78ae81bb724cc41e.bundle.js"></script><script type="text/javascript" src="main.ccd4f32aef1a5dbd712a.bundle.js"></script></body>
-</html>
--->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Test</title>
-    <script type="text/javascript" src="http://localhost:3000/tealbook.js"></script>
-    <style>
-      body {
-        font-size: 14px;
-      }
-      input {
-        width: 100%;
-        margin: 5px 0;
-        font-size: 16px;
-      }
-      button {
-        margin-top: 10px;
-        font-size: 16px;
-      }
-    </style>
-  </head>
-  <body>
-    <h2>Use your own form</h2>
-    <div style='width: 300px; margin: auto; background: lightgray; padding: 20px'>
-      <form id='my-form'>
-        <div><input id="email" type="text" placeholder="username" /></div>
-        <div><input id="password" type="password" placeholder="password" /></div>
-        <div><button type="submit">Login</button></div>
-      </form>
-    </div>
-
-    <h2>Use self-generated form</h2>
-    <div id="tealbook"></div>
-
-    <h2>Use IFrame</h2>
-    <div id="with-iframe" style="width: 300px; height: 200px; margin: auto">
-      <iframe
-        height="100%"
-        width="100%"
-        src="http://localhost:3000/accounts/remote-login/iframe"
-        sandbox="allow-scripts allow-forms allow-same-origin allow-scripts allow-top-navigation"
-      ></iframe>
-    </div>
-  </body>
-
-  <script>
-      var tealbook = new Tealbook();
-      tealbook.generateForm(document.getElementById('tealbook'))
-
-      document.getElementById('my-form').addEventListener('submit', (ev) => {
-        ev.preventDefault();
-        login()
-      })
-
-      function login() {
-        var email = document.querySelector('#email').value;
-        var password = document.querySelector('#password').value;
-        const result = tealbook
-          .login(email, password)
-          .then((response) => {
-            window.location.href = response.redirect
-          })
-          .catch((response) => console.error('catch', response))
-      }
-  </script>
 </html>
